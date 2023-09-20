@@ -7,6 +7,6 @@ Project proposal goes here.
 
 
 # reading material:
-#Meta:
+## Meta:
 https://transparency.fb.com/en-gb/policies/community-standards/adult-nudity-sexual-activity/
 https://transparency.fb.com/policies/improving/proactive-rate-metric/
