@@ -8,5 +8,11 @@ Project proposal goes here.
 
 # reading material:
 ## Meta:
+### Policy:
 https://transparency.fb.com/en-gb/policies/community-standards/adult-nudity-sexual-activity/
 https://transparency.fb.com/policies/improving/proactive-rate-metric/
+
+### Research Paper for Meta's NSFW detection model:
+
+https://about.fb.com/news/2021/12/metas-new-ai-system-tackles-harmful-content/
+https://ai.meta.com/blog/harmful-content-can-evolve-quickly-our-new-ai-system-adapts-to-tackle-it/
