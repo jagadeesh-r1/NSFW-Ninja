@@ -26,4 +26,11 @@ https://github.com/bumble-tech/private-detector (Repo)
 
 ### Others
 https://github.com/EBazarov/nsfw_data_source_urls (Dataset)  
-https://github.com/yangbisheng2009/nsfw-resnet (PyTorch Resnet)
+https://github.com/yangbisheng2009/nsfw-resnet (PyTorch Resnet)  
+
+## Black-box label-only attacks (only from decent conferences)  
+Sign-OPT: A Query-Efficient Hard-label Adversarial Attack - https://arxiv.org/abs/1909.10773  (ICLR '20)  
+Query-Efficient Hard-label Black-box Attac - https://arxiv.org/pdf/1807.04457.pdf  (ICLR '19)  
+Square Attack: a query-efficient black-box adversarial attack via random search - https://arxiv.org/abs/1912.00049 (ECCV '20)  
+Improving Black-box Adversarial Attacks with a Transfer-based Prior - https://arxiv.org/abs/1906.06919 (NIPS '19)  
+Low-Frequency Adversarial Perturbation - https://arxiv.org/abs/1809.08758 (PMLR '19)
