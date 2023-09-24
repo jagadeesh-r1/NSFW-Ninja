@@ -32,12 +32,12 @@ https://github.com/yangbisheng2009/nsfw-resnet (PyTorch Resnet)
 Kamalnath -   
 Sign-OPT: A Query-Efficient Hard-label Adversarial Attack - https://arxiv.org/abs/1909.10773  (ICLR '20)  
 Query-Efficient Hard-label Black-box Attac - https://arxiv.org/pdf/1807.04457.pdf  (ICLR '19)  
-Square Attack: a query-efficient black-box adversarial attack via random search - https://arxiv.org/abs/1912.00049 (ECCV '20)  
+Improving Query Efficiency of Black-box Adversarial Attack - https://arxiv.org/pdf/2009.11508.pdf (ECCV '19)  
 
 Jagadeesh -   
 Improving Black-box Adversarial Attacks with a Transfer-based Prior - https://arxiv.org/abs/1906.06919 (NIPS '19)  
 Low-Frequency Adversarial Perturbation - https://arxiv.org/abs/1809.08758 (PMLR '19)  
-Improving Query Efficiency of Black-box Adversarial Attack - https://arxiv.org/pdf/2009.11508.pdf (ECCV '19)  
+Square Attack: a query-efficient black-box adversarial attack via random search - https://arxiv.org/abs/1912.00049 (ECCV '20)  
 
 Neelesh -   
 Improving Adversarial Transferability via Neuron Attribution-Based Attacks - https://arxiv.org/abs/2204.00008  (CVPR '22)  
