@@ -2,6 +2,19 @@ import requests
 import os
 import selenium
 
+""" 
+TODO:  
+1. create a queue of urls to download
+2. write a multi-threaded program to create headless browsers and subscribe to the queue
+3. download the images and save them to a folder/s3 bucket?
+"""
+def headless_browser():
+    """create a headless browser"""
+    options = selenium.webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('window-size=1200x600')
+    return selenium.webdriver.Chrome(chrome_options=options)
+
 source_directory = "/home/jaggu/nsfw_data_source_urls/raw_data"
 
 # for directory in os.listdir(source_directory):
