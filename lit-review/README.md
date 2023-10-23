@@ -1,3 +1,8 @@
+# Additions to the Updated Proposal doc
+1. Updated the Introduction Section
+2. Added Literature Review Section with updated references
+
+
 ## Existing Libraries
 
 https://pypi.org/project/nsfw-detector/
