@@ -1,0 +1,6 @@
+# igore images
+*.jpg
+*.png
+*.jpeg
+*.gif
+*.bmp
