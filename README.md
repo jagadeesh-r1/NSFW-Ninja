@@ -1,4 +1,11 @@
 # NSFW-Ninja: Masters of Disguise in the Content Filter Jungle
 
-## Abstract
-The proliferation of social media platforms has led to an increased need for content moderation, with NSFW (Not Safe For Work) detectors playing a pivotal role in maintaining a safe and respectful online environment. However, these detectors are not immune to manipulation, raising concerns about their effectiveness and reliability. This work presents a systematic investigation into the vulnerabilities of NSFW detectors through a black-box attack methodology. Additionally, we present an adversarial attack on the existing NSFW detectors present on popular social media sites. We will systematically perturb the NSFW images and observe the response from the detector. The direction of the perturbation will move the image closer to the detection boundary. In summary, this project seeks to investigate the robustness and expose vulnerabilities in NSFW detectors, demonstrating their susceptibility to manipulation and contributing to the development of more robust and ethical content moderation systems.
+### Existing Libraries (already implemented the White-box attacks)  
+These are the major ones (there exist other smaller ones too), listing them in decreasing order of popularity -   
+
+ART - https://adversarial-robustness-toolbox.readthedocs.io/en/latest/index.html  (https://github.com/Trusted-AI/adversarial-robustness-toolbox)  
+Foolbox - https://github.com/bethgelab/foolbox  
+torchattack - https://adversarial-attacks-pytorch.readthedocs.io/en/latest/index.html  
+DeepRobust - https://github.com/DSE-MSU/DeepRobust  
+Cleverhans - https://github.com/cleverhans-lab/cleverhans  
+PyTorch based - https://github.com/Harry24k/adversarial-attacks-pytorch  
