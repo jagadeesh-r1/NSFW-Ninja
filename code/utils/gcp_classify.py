@@ -2,14 +2,11 @@ from google.cloud import vision
 import os
 import csv
 
-result_file = "code/dataset/gcp_result.csv"
-if os.path.exists(result_file):
-    os.remove(result_file)
 
 vision_client = vision.ImageAnnotatorClient()
 
 
-def classify_image(image_path):
+def classify_image(image_path, writer):
     with open(image_path, "rb") as image_file:
         content = image_file.read()
     
@@ -51,17 +48,32 @@ def classify_image(image_path):
         )
 
 if __name__ == "__main__":
-    file = open(result_file, "w")
-    writer = csv.writer(file)
-    writer.writerow(["image", "adult", "medical", "spoofed", "violence", "racy"])
+    result_file = "code/dataset/gcp_result.csv"
+    if os.path.exists(result_file):
+        file = open(result_file, "a")
+        writer = csv.writer(file)
+        # os.remove(result_file)
+    else:
+        file = open(result_file, "w")
+        writer = csv.writer(file)
+        writer.writerow(["image", "adult", "medical", "spoofed", "violence", "racy"])
+    existing_images = []
+    with open(result_file, "r") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            existing_images.append(row[0])
+    print("Existing images: ", len(existing_images))
     print("Classifying images...")
     dataset_path = "/home/jaggu/nsfw_data_scraper/dataset/"
     for root, dirs, files in os.walk(dataset_path):
         for file in files:
             image_path = os.path.join(root, file)
-            try:
-                classify_image(image_path)
-            except Exception as e:
-                print(e)
+            if image_path in existing_images:
                 continue
+            else:
+                try:
+                    classify_image(image_path, writer)
+                except Exception as e:
+                    print(e)
+                    continue
     
