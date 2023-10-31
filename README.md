@@ -9,3 +9,6 @@ torchattack - https://adversarial-attacks-pytorch.readthedocs.io/en/latest/index
 DeepRobust - https://github.com/DSE-MSU/DeepRobust  
 Cleverhans - https://github.com/cleverhans-lab/cleverhans  
 PyTorch based - https://github.com/Harry24k/adversarial-attacks-pytorch  
+
+## Attack target
+1. https://nudenet.notai.tech/
