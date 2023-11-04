@@ -8,5 +8,7 @@ Request was denied due to copyright issues.
 
 
 ## Action Plan:
+<strike>
 1. Download the images from above mentioned repository and clean the images(few of these are expired links so would have to handle that)
+</strike>
 2. Train initial model
