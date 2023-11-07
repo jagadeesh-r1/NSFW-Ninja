@@ -1,0 +1,5 @@
+bumble_dump: pkls/bumble_predictions.pkl
+nsfw_model_path: /home/neelesh/research-project-security-sheriffs/experiments/saved_models/nsfw_mobilenet2.224x224.h5
+dump_results: True
+print_results: False
+dump_file: pkls/nsfw_predictions.pkl
