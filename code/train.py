@@ -14,7 +14,7 @@ import torch.nn.functional as F
 import utils
 
 
-def train_one_epoch(model, criterion, optimizer, data_loader, epoch, val_dataloader, classes):
+def train_one_epoch(model, criterion, optimizer, data_loader, epoch, val_dataloader, classes, args):
     epoch_start = time.time()
     model.train()
     running_loss = 0.0
@@ -48,7 +48,7 @@ def train_one_epoch(model, criterion, optimizer, data_loader, epoch, val_dataloa
 
         # Validation
         if i % args['eval_freq'] == 0 and i != 0:
-            val_acc = validate(model, criterion, val_dataloader, epoch, i)
+            val_acc = validate(model, criterion, val_dataloader, epoch, i, args)
             model.train()
             # the first or best will be saved (based on validation accuracy)
             if len(g_val_accs) == 0 or val_acc > g_val_accs.get(max(g_val_accs, key=g_val_accs.get), 0.0):
@@ -73,7 +73,7 @@ def train_one_epoch(model, criterion, optimizer, data_loader, epoch, val_dataloa
     print()
 
 
-def validate(model, criterion, data_loader, epoch, step):
+def validate(model, criterion, data_loader, epoch, step, args):
     epoch_start = time.time()
     model.eval()
     running_loss = 0.0
@@ -173,7 +173,7 @@ def main(args):
     print("Start training")
     start_time = time.time()
     for epoch in range(args['epochs']):
-        train_one_epoch(model, criterion, optimizer, train_data_loader, epoch, val_dataloader, classes)
+        train_one_epoch(model, criterion, optimizer, train_data_loader, epoch, val_dataloader, classes, args)
         lr_scheduler.step()
 
     total_time = time.time() - start_time

@@ -10,7 +10,7 @@ import torchvision
 from torchvision import transforms
 import torch.nn.functional as F
 
-def infer(model, criterion, data_loader, epoch, step):
+def infer(model, criterion, data_loader, epoch, step, args):
     epoch_start = time.time()
     model.eval()
     running_loss = 0.0
@@ -48,7 +48,7 @@ def infer(model, criterion, data_loader, epoch, step):
     return epoch_acc
 
 
-def test():
+def test(args):
     testdir = args['test_dir']
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     st = time.time()
@@ -69,7 +69,7 @@ def test():
     checkpoint = torch.load(args['resume'], map_location='cpu')
     model.load_state_dict(checkpoint['model'])
 
-    infer(model, criterion, test_data_loader)
+    infer(model, criterion, test_data_loader, args)
 
 if __name__ == "__main__":
     with open('configs.yaml') as f:
