@@ -1,0 +1,16 @@
+train_dir: /home/neelesh/research-project-security-sheriffs/dataset/train
+val_dir: /home/neelesh/research-project-security-sheriffs/dataset/val
+test_dir: /home/neelesh/research-project-security-sheriffs/dataset/test
+model: resnet101
+batch_size: 128
+epochs: 100
+workers: 16
+lr: 0.01
+momentum: 0.9
+weight_decay: 0.0001
+lr_gamma: 0.1
+print_freq: 10
+eval_freq: 50
+checkpoints: checkpoints/
+resume: False
+test_only: False
