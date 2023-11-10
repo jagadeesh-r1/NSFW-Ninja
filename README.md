@@ -12,3 +12,7 @@ PyTorch based - https://github.com/Harry24k/adversarial-attacks-pytorch
 
 ## Attack target
 1. https://nudenet.notai.tech/
+
+### Patch Generation
+[Segment and Complete](https://arxiv.org/pdf/2112.04532.pdf)  
+[Naturalistic Physical Adversarial Patch](https://openaccess.thecvf.com/content/ICCV2021/papers/Hu_Naturalistic_Physical_Adversarial_Patch_for_Object_Detectors_ICCV_2021_paper.pdf)
