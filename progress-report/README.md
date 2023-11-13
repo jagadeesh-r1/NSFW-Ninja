@@ -1,4 +1,4 @@
-### Updates to Literature Review  
+### Updates (from Literature Review to Progress Report)
 
 * Added Implementation Method
     * Dataset Preparation
