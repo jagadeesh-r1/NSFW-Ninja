@@ -1,5 +1,5 @@
 bumble_model_folder: /home/neelesh/research-project-security-sheriffs/experiments/saved_models
-dataset_path: /home/neelesh/research-project-security-sheriffs/dataset/train/*.jpg
+dataset_path: /home/neelesh/research-project-security-sheriffs/dataset/test/*.jpg
 pick_random: False
 # Leave num_images blank for running inference on all the images
 num_images:
@@ -7,4 +7,4 @@ allowed_file_types: [jpg, jpeg, png]
 batch_size: 32
 dump_results: True
 print_results: False
-dump_file: pkls/bumble_predictions.pkl
+dump_file: pkls/bumble_predictions_test.pkl

@@ -1,0 +1,70 @@
+For Bumble Predictions between 0%-100% : 7415.0 Images
+Category sexy : 45.58327714093055
+Category neutral : 27.17464598786244
+Category porn : 7.107215104517869
+Category hentai : 12.380310182063385
+Category drawings : 7.754551584625759
+
+For Bumble Predictions between 100%-200% : 2440.0 Images
+Category sexy : 58.31967213114754
+Category neutral : 13.565573770491802
+Category porn : 16.311475409836067
+Category hentai : 9.754098360655737
+Category drawings : 2.0491803278688523
+
+For Bumble Predictions between 200%-300% : 1026.0 Images
+Category sexy : 55.16569200779727
+Category neutral : 11.89083820662768
+Category porn : 22.514619883040936
+Category hentai : 9.064327485380117
+Category drawings : 1.364522417153996
+
+For Bumble Predictions between 300%-400% : 788.0 Images
+Category sexy : 51.015228426395936
+Category neutral : 11.16751269035533
+Category porn : 27.918781725888326
+Category hentai : 8.629441624365482
+Category drawings : 1.2690355329949239
+
+For Bumble Predictions between 400%-500% : 626.0 Images
+Category sexy : 50.95846645367412
+Category neutral : 10.383386581469649
+Category porn : 28.115015974440894
+Category hentai : 9.584664536741213
+Category drawings : 0.9584664536741214
+
+For Bumble Predictions between 500%-600% : 621.0 Images
+Category sexy : 51.368760064412236
+Category neutral : 8.53462157809984
+Category porn : 32.2061191626409
+Category hentai : 7.729468599033816
+Category drawings : 0.1610305958132045
+
+For Bumble Predictions between 600%-700% : 696.0 Images
+Category sexy : 49.85632183908046
+Category neutral : 7.183908045977011
+Category porn : 34.770114942528735
+Category hentai : 8.045977011494253
+Category drawings : 0.14367816091954022
+
+For Bumble Predictions between 700%-800% : 911.0 Images
+Category sexy : 48.62788144895719
+Category neutral : 8.781558726673985
+Category porn : 36.55323819978046
+Category hentai : 5.48847420417124
+Category drawings : 0.5488474204171241
+
+For Bumble Predictions between 800%-900% : 1688.0 Images
+Category sexy : 46.741706161137444
+Category neutral : 8.116113744075829
+Category porn : 40.639810426540286
+Category hentai : 4.38388625592417
+Category drawings : 0.11848341232227488
+
+For Bumble Predictions between 900%-1000% : 3781.0 Images
+Category sexy : 45.70219518645861
+Category neutral : 7.299656175614917
+Category porn : 44.93520232742661
+Category hentai : 1.9836022216344882
+Category drawings : 0.07934408886537953
+

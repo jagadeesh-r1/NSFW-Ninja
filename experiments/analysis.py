@@ -1,8 +1,8 @@
 import numpy as np
 import pickle
 
-bumble_dump = "pkls/bumble_predictions.pkl"
-nsfw_dump = "pkls/nsfw_predictions.pkl"
+bumble_dump = "pkls/bumble_predictions_test.pkl"
+nsfw_dump = "pkls/nsfw_predictions_test.pkl"
 
 categories = {'sexy':0, 'neutral':1, 'porn':2, 'hentai':3, 'drawings':4}
 rev_categories = {categories[k]:k for k in categories}
