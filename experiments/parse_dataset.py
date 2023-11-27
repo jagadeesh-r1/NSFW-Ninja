@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 
 nsfw_dump = "pkls/nsfw_predictions_test.pkl"
+# nsfw_dump = "pkls/nsfw_predictions.pkl"
 
 categories = {'sexy':0, 'neutral':1, 'porn':2, 'hentai':3, 'drawings':4}
 allowed_categories = ['sexy', 'porn', 'hentai']
