@@ -66,7 +66,7 @@ def test(args):
 
     criterion = nn.CrossEntropyLoss()
     model = torchvision.models.__dict__[args['model']](pretrained=True)
-    checkpoint = torch.load(args['resume'], map_location='cpu')
+    checkpoint = torch.load(args['model_path'], map_location='cpu')
     model.load_state_dict(checkpoint['model'])
 
     infer(model, criterion, test_data_loader, args)

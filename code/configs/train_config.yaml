@@ -25,3 +25,6 @@ checkpoints: checkpoints/
 resume: False
 model_path:
 test_only: False
+
+#For test only
+model_path: checkpoints/model.pth
