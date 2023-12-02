@@ -8,8 +8,13 @@ import torch.utils.data
 from torch import nn
 import torchvision
 from torchvision import transforms
-from torchvision.models import ResNet101_Weights
+from torchvision.models import ResNet18_Weights
 import torch.nn.functional as F
+
+import os
+
+from PIL import Image
+Image.MAX_IMAGE_PIXELS = 1000000000                                                                                              
 
 
 def train_epoch(model, criterion, optimizer, train_data_loader, current_epoch, args):
@@ -18,7 +23,7 @@ def train_epoch(model, criterion, optimizer, train_data_loader, current_epoch, a
     training_loss = 0.0
     correct_preds = 0
     epoch_data_len = len(train_data_loader.dataset)
-    print('Total Training Data: {}'.format(epoch_data_len))
+    # print('Total Training Data: {}'.format(epoch_data_len))
 
     for i, (image, target) in enumerate(train_data_loader):
         image, target = image.cuda(), target.cuda()
@@ -41,9 +46,9 @@ def train_epoch(model, criterion, optimizer, train_data_loader, current_epoch, a
         # print(acc)
     
     acc = correct_preds.cpu() / epoch_data_len
-    if current_epoch == args['print_freq']:
+    if current_epoch % args['print_freq'] == 0:
         print("Epoch : {}   Training Accuracy : {}".format(current_epoch, acc))
-        print("")
+        # print("")
 
 
 def save_model(model, optimizer, lr_scheduler, args, current_epoch):
@@ -95,7 +100,7 @@ def train(args):
         shuffle=False, num_workers=args['num_workers'], pin_memory=args['pin_memory'])
 
 
-    model = torchvision.models.__dict__[args['model']](weights=ResNet101_Weights.IMAGENET1K_V1)
+    model = torchvision.models.__dict__[args['model']](weights=ResNet18_Weights.IMAGENET1K_V1)
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, 1)
 
@@ -116,10 +121,11 @@ def train(args):
 
     # Training
     val_acc = 0
+    print("############# TRAINING ################")
     for epoch in range(args['epochs']):
         train_epoch(model, criterion, optimizer, train_data_loader, epoch, args)
         lr_scheduler.step()
-        if epoch % args['eval_freq']:
+        if epoch % args['eval_freq'] == 0:
             acc = validate(model, criterion, val_data_loader, epoch)
             if acc > val_acc:
                 save_model(model, optimizer, lr_scheduler, args, epoch)
