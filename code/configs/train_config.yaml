@@ -27,4 +27,4 @@ model_path:
 test_only: False
 
 #For test only
-model_path: checkpoints/model_10.pth
+model_path: checkpoints/model_95.pth

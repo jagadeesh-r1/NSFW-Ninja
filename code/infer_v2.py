@@ -25,18 +25,12 @@ def test(args):
     model = nn.DataParallel(model, args['gpus'])
     model.cuda()
 
-    # model_files = os.listdir(args['checkpoints'])
-    # model_files = [file for file in model_files if file.endswith(".pth")]
-    # indices = [int(file.split("_")[1].split(".")[0]) for file in model_files]
-    # highest_index = max(indices)
-    # best_model_file = f"model_{highest_index}.pth"
-    # best_model_file = os.path.join(args['checkpoints'], best_model_file)
-
     best_model_file = args['model_path']
 
     checkpoint = torch.load(best_model_file, map_location='cpu')
 
     model.load_state_dict(checkpoint['model'])
+    model.eval()
 
     correct_preds = 0
     test_loss = 0.0
