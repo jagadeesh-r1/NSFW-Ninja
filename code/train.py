@@ -12,6 +12,7 @@ from torchvision import transforms
 import torch.nn.functional as F
 
 import utils
+import utils.dataloader
 
 
 def train_one_epoch(model, criterion, optimizer, data_loader, epoch, val_dataloader, classes, args):
@@ -123,8 +124,7 @@ def main(args):
     train_dataset = torchvision.datasets.ImageFolder(
              traindir,
              transforms.Compose([
-                    transforms.Resize((256, 256)),
-                    transforms.RandomCrop(224),
+                    transforms.Resize((224, 224)),
                     transforms.RandomHorizontalFlip(),
                     transforms.ToTensor(),
                     normalize,]))
