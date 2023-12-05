@@ -4,6 +4,7 @@ val_dir: /home/neelesh/research-project-security-sheriffs/dataset/val
 test_dir: /home/neelesh/research-project-security-sheriffs/dataset/test
 
 # Model
+base: vit
 model: vit_b_16
 batch_size: 128
 epochs: 100

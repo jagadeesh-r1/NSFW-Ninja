@@ -4,6 +4,7 @@ val_dir: /home/neelesh/research-project-security-sheriffs/dataset/val
 test_dir: /home/neelesh/research-project-security-sheriffs/dataset/test
 
 # Model
+base: inception
 model: inception_v3
 batch_size: 128
 epochs: 100
