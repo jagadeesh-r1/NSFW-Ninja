@@ -2,7 +2,7 @@ import torchvision
 from torchvision import transforms
 import torch
 import torch.nn as nn
-from torchvision.models import ViT_B_16_Weights, ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, Inception_V3_Weights
+from torchvision.models import ViT_B_16_Weights, ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights, Inception_V3_Weights
 
 def loadDataset(datadir=None, train=False):
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -59,8 +59,9 @@ def loadModel(args):
     
     if args['base'] == 'resnet':
 
-        resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights}
-
+        # resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights}
+        resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights, 'resnet101':ResNet101_Weights}
+        
         model = torchvision.models.__dict__[args['model']](weights=resnet_weights[args['model']].IMAGENET1K_V1)
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, 1)

@@ -8,14 +8,14 @@ import torch.utils.data
 from torch import nn
 import torchvision
 from torchvision import transforms
-from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights
+from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights
 import torch.nn.functional as F
 
 import os
 
 devices = None
 
-resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights}
+resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights, 'resnet101':ResNet101_Weights}
 
 def test(args):
     test_dataset = classifier_utils.loadDataset(datadir = args['test_dir'], train=False)
