@@ -8,7 +8,7 @@ import torch.utils.data
 from torch import nn
 import torchvision
 from torchvision import transforms
-from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights
+from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights
 import torch.nn.functional as F
 
 import os
@@ -19,7 +19,7 @@ Image.MAX_IMAGE_PIXELS = 1000000000
 
 devices = None
 
-resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights}
+resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights, 'resnet101':ResNet101_Weights}
 
 
 def train_epoch(model, criterion, optimizer, train_data_loader, current_epoch, args):
@@ -121,7 +121,6 @@ def train(args):
         model.load_state_dict(checkpoint['model'])
         optimizer.load_state_dict(checkpoint['optimizer'])
         lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
-
 
     # Training
     val_acc = 0
