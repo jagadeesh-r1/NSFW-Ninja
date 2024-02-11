@@ -5,7 +5,7 @@ test_dir: /home/neelesh/research-project-security-sheriffs/dataset/test
 
 # Model
 base: resnet
-model: resnet101
+model: resnet50
 batch_size: 128
 epochs: 100
 lr: 0.01
@@ -24,7 +24,6 @@ print_freq: 1
 eval_freq: 10
 checkpoints: checkpoints/{model}
 resume: False
-model_path:
 test_only: False
 
 #For test only

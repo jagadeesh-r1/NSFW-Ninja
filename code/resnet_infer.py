@@ -23,18 +23,22 @@ def test(args):
         test_dataset, batch_size=args['batch_size'],
         shuffle=False, num_workers=args['num_workers'], pin_memory=args['pin_memory'])
 
+    # Architecture Loading
     model = torchvision.models.__dict__[args['model']](weights=resnet_weights[args['model']].IMAGENET1K_V1)
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, 1)
     model.to(devices[0])
     model = nn.DataParallel(model, args['gpus'])
 
+    # Best model file from saved models
     best_model_file = args['model_path']
 
+    # Model Loading
     checkpoint = torch.load(best_model_file, map_location='cpu')
-
     model.load_state_dict(checkpoint['model'])
     model.eval()
+
+    # Model Loading completed
 
     correct_preds = 0
     test_loss = 0.0

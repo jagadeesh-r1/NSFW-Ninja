@@ -21,15 +21,18 @@ def test(args):
         test_dataset, batch_size=args['batch_size'],
         shuffle=False, num_workers=args['num_workers'], pin_memory=args['pin_memory'])
 
+    # Architecture Loading
     model = torchvision.models.__dict__[args['model']](weights=ViT_B_16_Weights.IMAGENET1K_V1)
     num_ftrs = model.heads.head.in_features
     model.heads = nn.Linear(num_ftrs, 1)
     model.to(devices[0])
     model = nn.DataParallel(model, device_ids=devices)
 
+    # Select model file
     best_model_file = args['model_path']
     checkpoint = torch.load(best_model_file, map_location='cpu')
 
+    # Model loading from saved model file
     model.load_state_dict(checkpoint['model'])
     model.eval()
 
