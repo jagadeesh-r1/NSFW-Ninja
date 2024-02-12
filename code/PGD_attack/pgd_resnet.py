@@ -65,7 +65,8 @@ def pgdAttack(config, num_images):
     total_images = 0
 
     # PGD attack
-    attack = ProjectedGradientDescentPyTorch(estimator=classifier, eps=0.2)
+    attack = ProjectedGradientDescentPyTorch(estimator=classifier, eps=8/255, norm="inf")
+    l_inf_max = 0
 
     for i, (image, target) in tqdm(enumerate(test_data_loader)):
         if total_images < num_images:
@@ -86,6 +87,9 @@ def pgdAttack(config, num_images):
             adv_preds = torch.round(torch.sigmoid(adv_outputs))
             adv_acc += torch.sum(adv_preds == target)
 
+            l_inf_max = max(l_inf_max, np.max(np.abs(x_test - x_test_adv)))
+            print(l_inf_max)
+
             asr += torch.sum(normal_preds != adv_preds)
 
     ### Logging
@@ -93,6 +97,7 @@ def pgdAttack(config, num_images):
     log += "Normal acc : {}\n".format(normal_acc * 100.0 / total_images)
     log += "Adversarial acc : {}\n".format(adv_acc * 100.0 / total_images)
     log += "Attack Success Rate : {}\n".format(asr * 100.0 / total_images)
+    log += "L-inf Norm Max : {}\n".format(l_inf_max)
     log += "--------------------------------------------------------------\n\n"
     log_file = open(config['logfile'], "a")
     log_file.write(log)
