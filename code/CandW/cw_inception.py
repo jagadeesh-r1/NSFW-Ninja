@@ -7,7 +7,7 @@ import yaml
 from tqdm import tqdm
 
 import torchvision
-from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights
+from torchvision.models import Inception_V3_Weights
 import torchattacks
 
 ##### Import utils from parent directory
@@ -16,15 +16,22 @@ parent = os.path.dirname(current)
 sys.path.append(parent)
 import utils.classifier_utils as classifier_utils
 
-
-# resnet_weights = {'resnet18':ResNet18_Weights, 'resnet34':ResNet34_Weights, 'resnet50':ResNet50_Weights, 'resnet101':ResNet101_Weights}
 devices = None
 
-
-def getResnetModel(modelpath, modeltype):
-    model = torchvision.models.__dict__[modeltype](weights=None)
+def getInceptionModel(modelpath, modeltype):
+    model = torchvision.models.__dict__[modeltype](weights=Inception_V3_Weights.IMAGENET1K_V1)
     num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, 1)
+    classifier = nn.Sequential(
+        nn.Linear(num_ftrs, 256),
+        nn.ReLU(),
+        nn.Dropout(0.5),
+        nn.Linear(256, 128),
+        nn.ReLU(),
+        nn.Dropout(0.25),
+        nn.Linear(128, 1)
+    )
+
+    model.fc = classifier
     model.to(devices[0])
     model = nn.DataParallel(model, device_ids=devices)
 
@@ -89,7 +96,7 @@ def cwAttack(config, num_images):
         test_dataset, batch_size=config['batch_size'],
         shuffle=True, num_workers=config['num_workers'], pin_memory=config['pin_memory'])
     
-    model = getResnetModel(config['model_path'], config['model'])
+    model = getInceptionModel(config['model_path'], config['model'])
 
     normal_acc = 0
     adv_acc = 0
@@ -124,7 +131,7 @@ def cwAttack(config, num_images):
     log += "Normal acc : {}\n".format(normal_acc * 100.0 / total_images)
     log += "Adversarial acc : {}\n".format(adv_acc * 100.0 / total_images)
     log += "Attack Success Rate : {}\n".format(asr * 100.0 / total_images)
-    log += "--------------------------------------------------------------\n\n"
+    log += "--------------------------------------------------------------"
     log_file = open(config['logfile'], "a")
     log_file.write(log)
     log_file.close()
@@ -132,11 +139,8 @@ def cwAttack(config, num_images):
 
 
 if __name__ == "__main__":
-    with open('configs/resnet_config.yaml') as f:
+    with open('configs/inception_config.yaml') as f:
         config = yaml.safe_load(f)
-
-    config['model_path'] = config['model_path'].format(model=config['model'])
-    config['checkpoints'] = config['checkpoints'].format(model=config['model'])
 
     devices = [torch.device(f"cuda:{id}") for id in config['gpus']]
     num_images = 1000

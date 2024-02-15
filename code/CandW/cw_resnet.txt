@@ -1,0 +1,24 @@
+Model : resnet34
+Normal acc : 99.90234375
+Adversarial acc : 22.265625
+Attack Success Rate : 77.63671875
+--------------------------------------------------------------
+
+Model : resnet18
+Normal acc : 100.0
+Adversarial acc : 46.484375
+Attack Success Rate : 53.515625
+--------------------------------------------------------------
+
+Model : resnet50
+Normal acc : 100.0
+Adversarial acc : 9.47265625
+Attack Success Rate : 90.52734375
+--------------------------------------------------------------
+
+Model : resnet101
+Normal acc : 100.0
+Adversarial acc : 10.3515625
+Attack Success Rate : 89.6484375
+--------------------------------------------------------------
+
