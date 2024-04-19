@@ -7,7 +7,7 @@ import yaml
 from tqdm import tqdm
 
 import torchvision
-from torchvision.models import ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights
+from torchvision.models import ViT_B_16_Weights
 from art.attacks.evasion import ProjectedGradientDescentPyTorch
 from art.estimators.classification import PyTorchClassifier
 
@@ -19,10 +19,10 @@ import utils.classifier_utils as classifier_utils
 
 devices = None
 
-def getResnetModel(modelpath, modeltype):
+def getViTModel(modelpath, modeltype):
     model = torchvision.models.__dict__[modeltype](weights=None)
-    num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, 1)
+    num_ftrs = model.heads.head.in_features
+    model.heads = nn.Linear(num_ftrs, 1)
     model.to(devices[0])
     model = nn.DataParallel(model, device_ids=devices)
 
@@ -53,7 +53,7 @@ def pgdAttack(config, num_images):
         test_dataset, batch_size=config['batch_size'],
         shuffle=True, num_workers=config['num_workers'], pin_memory=config['pin_memory'])
     
-    model = getResnetModel(config['model_path'], config['model'])
+    model = getViTModel(config['model_path'], config['model'])
     classifier = getARTClassifier(model, config)
 
     normal_acc = 0
@@ -95,17 +95,16 @@ def pgdAttack(config, num_images):
     log += "Adversarial acc : {}\n".format(adv_acc * 100.0 / total_images)
     log += "Attack Success Rate : {}\n".format(asr * 100.0 / total_images)
     log += "L-inf Norm Max : {}\n".format(l_inf_max)
-    log += "--------------------------------------------------------------\n\n"
+    log += "--------------------------------------------------------------"
     log_file = open(config['logfile'], "a")
     log_file.write(log)
     log_file.close()
 
 
-if __name__ == "__main__":
-    with open('Cats_Dogs/resnet_config.yaml') as f:
-        config = yaml.safe_load(f)
 
-    config['model'] = sys.argv[1]
+if __name__ == "__main__":
+    with open('configs/vit_config.yaml') as f:
+        config = yaml.safe_load(f)
 
     config['model_path'] = config['model_path'].format(model=config['model'])
     config['checkpoints'] = config['checkpoints'].format(model=config['model'])
