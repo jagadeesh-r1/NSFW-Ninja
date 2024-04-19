@@ -3,9 +3,10 @@ from torchvision import transforms
 import torch
 import torch.nn as nn
 from torchvision.models import ViT_B_16_Weights, ResNet18_Weights, ResNet34_Weights, ResNet50_Weights, ResNet101_Weights, Inception_V3_Weights
+import matplotlib.pyplot as plt
 
 def loadDataset(datadir=None, train=False):
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    # normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
     if train:
         return torchvision.datasets.ImageFolder(
@@ -15,19 +16,17 @@ def loadDataset(datadir=None, train=False):
                         transforms.RandomCrop(224),
                         transforms.RandomHorizontalFlip(),
                         transforms.RandomRotation(30),
-                        transforms.ToTensor(),
-                        normalize]))
+                        transforms.ToTensor()]))
     else:
         return torchvision.datasets.ImageFolder(
                 datadir,
                 transforms.Compose([
                     transforms.Resize((224, 224)),
-                    transforms.ToTensor(),
-                    normalize]))
+                    transforms.ToTensor()]))
 
 
 def loadInceptionDataset(datadir=None, train=False):
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    # normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
     if train:
         return torchvision.datasets.ImageFolder(
@@ -37,15 +36,13 @@ def loadInceptionDataset(datadir=None, train=False):
                         transforms.RandomCrop(299),
                         transforms.RandomHorizontalFlip(),
                         transforms.RandomRotation(30),
-                        transforms.ToTensor(),
-                        normalize]))
+                        transforms.ToTensor()]))
     else:
         return torchvision.datasets.ImageFolder(
                 datadir,
                 transforms.Compose([
                     transforms.Resize((299, 299)),
-                    transforms.ToTensor(),
-                    normalize]))
+                    transforms.ToTensor()]))
 
 
 def accuracy(y, y_pred):
@@ -111,4 +108,13 @@ def loadModel(args):
         model.load_state_dict(checkpoint['model'])
         model.eval()
 
-    return model  
+    return model
+
+
+def plot(x_list, y_list, x_label, y_label, title, plot_path):
+    plt.plot(x_list, y_list)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    plt.savefig(plot_path)
+    plt.close()
