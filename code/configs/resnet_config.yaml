@@ -30,4 +30,4 @@ test_only: False
 
 #For test only
 model_path: checkpoints/{model}/model_100.pth
-logfile: PGD_attack/pgd_resnet.txt
+logfile: CandW/cw_resnet.txt
